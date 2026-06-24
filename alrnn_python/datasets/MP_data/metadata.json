@@ -1,0 +1,51 @@
+{
+  "game": "matching_pennies",
+  "state": [
+    "p1",
+    "p2"
+  ],
+  "state_representation": "nash_centered_observation",
+  "equilibrium": [
+    0.0,
+    0.0
+  ],
+  "nash_observation": [
+    0.0,
+    0.0
+  ],
+  "nash_policy": [
+    0.5,
+    0.5
+  ],
+  "normalization": {
+    "method": "zscore_from_train",
+    "mean": [
+      8.649453593838489e-05,
+      0.0002514687337312735
+    ],
+    "std": [
+      0.2311238225227402,
+      0.23117004931351368
+    ],
+    "equilibrium_norm": [
+      -0.00037423462018881554,
+      -0.0010878084530329044
+    ]
+  },
+  "n_train_trajectories": 64,
+  "n_test_trajectories": 16,
+  "n_steps_trajectory": 1500,
+  "seed": 11,
+  "initial_radius_min": 0.18,
+  "initial_radius_max": 0.42,
+  "train_trajectory_shape": [
+    64,
+    1500,
+    2
+  ],
+  "test_trajectory_shape": [
+    16,
+    1500,
+    2
+  ]
+}

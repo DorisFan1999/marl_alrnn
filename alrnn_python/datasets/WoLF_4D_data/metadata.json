@@ -1,0 +1,125 @@
+{
+  "game": "wolf_phc_rps",
+  "state_representation": "nash_centered_4d_joint_policy",
+  "actions": [
+    "rock",
+    "paper",
+    "scissors"
+  ],
+  "payoff_player_1": [
+    [
+      0.0,
+      -1.0,
+      1.0
+    ],
+    [
+      1.0,
+      0.0,
+      -1.0
+    ],
+    [
+      -1.0,
+      1.0,
+      0.0
+    ]
+  ],
+  "payoff_player_2": [
+    [
+      -0.0,
+      1.0,
+      -1.0
+    ],
+    [
+      -1.0,
+      -0.0,
+      1.0
+    ],
+    [
+      1.0,
+      -1.0,
+      -0.0
+    ]
+  ],
+  "q_values": "expected_payoffs",
+  "target": "convergent_wolf_phc_transient_toward_nash",
+  "mixed_nash_observation": [
+    0.0,
+    0.0,
+    0.0,
+    0.0
+  ],
+  "mixed_nash_policy": [
+    0.3333333333333333,
+    0.3333333333333333,
+    0.3333333333333333,
+    0.3333333333333333,
+    0.3333333333333333,
+    0.3333333333333333
+  ],
+  "normalization": {
+    "method": "zscore_from_train",
+    "mean": [
+      -0.008857259004515606,
+      -0.0017554456384259098,
+      0.004536983893864897,
+      -0.009454300294791298
+    ],
+    "std": [
+      0.08638630514772047,
+      0.07993326156128194,
+      0.09041099945054167,
+      0.0870766551263156
+    ],
+    "equilibrium_norm": [
+      0.10253082348376522,
+      0.021961391342452268,
+      -0.05018176904843092,
+      0.10857445409537896
+    ]
+  },
+  "diagnostics": {
+    "train": {
+      "agent1_final_distance_mean": 0.057841610204351454,
+      "agent1_final_distance_max": 0.3461164862721999,
+      "agent2_final_distance_mean": 0.059545746990552706,
+      "agent2_final_distance_max": 0.3616907836051865,
+      "joint_initial_distance_mean": 0.2198832250945193,
+      "joint_final_distance_mean": 0.09034036602951721,
+      "joint_final_initial_ratio_mean": 0.3809725794336968,
+      "joint_final_initial_ratio_max": 1.4880502597724847,
+      "min_probability_min": 0.039999999999999994,
+      "min_probability_mean": 0.12368960691931044
+    },
+    "test": {
+      "agent1_final_distance_mean": 0.03991317758679941,
+      "agent1_final_distance_max": 0.2378521915839084,
+      "agent2_final_distance_mean": 0.041586897997905006,
+      "agent2_final_distance_max": 0.14186914639709802,
+      "joint_initial_distance_mean": 0.21107523771251832,
+      "joint_final_distance_mean": 0.06278762816916701,
+      "joint_final_initial_ratio_mean": 0.2968842733107714,
+      "joint_final_initial_ratio_max": 1.1423123676155054,
+      "min_probability_min": 0.0518288906340067,
+      "min_probability_mean": 0.12606320986885935
+    }
+  },
+  "n_train_trajectories": 80,
+  "n_test_trajectories": 20,
+  "n_steps_per_trajectory": 3000,
+  "learning_rate_win": 0.0003,
+  "learning_rate_lose": 0.0012,
+  "min_action_probability": 0.04,
+  "initial_distance_min": 0.12,
+  "initial_distance_max": 0.28,
+  "seed": 23,
+  "train_trajectory_shape": [
+    80,
+    3000,
+    4
+  ],
+  "test_trajectory_shape": [
+    20,
+    3000,
+    4
+  ]
+}

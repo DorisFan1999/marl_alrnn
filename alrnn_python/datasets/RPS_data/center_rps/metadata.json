@@ -1,0 +1,76 @@
+{
+  "game": "rps_replicator_seperate_model",
+  "regime": "center_rps",
+  "s": 1.0,
+  "expected_radial_behavior": "approximately neutral radius",
+  "dynamics": "two independent generalized RPS replicator fields",
+  "state_names": [
+    "p1_rock",
+    "p1_paper",
+    "p2_rock",
+    "p2_paper"
+  ],
+  "mixed_nash_observation": [
+    0.0,
+    0.0,
+    0.0,
+    0.0
+  ],
+  "n_trajectories": 200,
+  "nums_trajectories": 200,
+  "n_steps": 1200,
+  "dt": 0.035,
+  "train_fraction": 0.8,
+  "normalization": {
+    "method": "scale_from_train_keep_mixed_nash_at_origin",
+    "mean": [
+      0.0,
+      0.0,
+      0.0,
+      0.0
+    ],
+    "std": [
+      0.06307282784419083,
+      0.06297623458807682,
+      0.06218381137054485,
+      0.061783504930571866
+    ],
+    "equilibrium_norm": [
+      0.0,
+      0.0,
+      0.0,
+      0.0
+    ]
+  },
+  "shapes": {
+    "train_trajectories_norm": [
+      160,
+      1200,
+      4
+    ],
+    "test_trajectories_norm": [
+      40,
+      1200,
+      4
+    ],
+    "train_trajectories_raw": [
+      160,
+      1200,
+      4
+    ],
+    "test_trajectories_raw": [
+      40,
+      1200,
+      4
+    ],
+    "train_regime_labels": [
+      160,
+      1200
+    ],
+    "test_regime_labels": [
+      40,
+      1200
+    ]
+  },
+  "seed": 11
+}
