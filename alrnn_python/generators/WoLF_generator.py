@@ -23,7 +23,7 @@ from pathlib import Path
 import numpy as np
 
 
-OUTPUT_DIR = Path(__file__).resolve().parents[1] / "datasets" / "WoLF_4D_data"
+OUTPUT_DIR = Path(__file__).resolve().parents[1] / "datasets" / "WoLF_4D_data_new"
 
 ACTIONS = ["rock", "paper", "scissors"]
 STATE_4D = [
@@ -56,7 +56,7 @@ NASH_POLICY = np.concatenate([NASH_PLAYER, NASH_PLAYER])
 NASH_OBSERVATION = np.zeros(4, dtype=np.float64)
 
 # Dataset settings.
-N_TRAJECTORIES = 100
+N_TRAJECTORIES = 200
 N_STEPS = 3000
 TRAIN_FRACTION = 0.8
 SEED = 23
