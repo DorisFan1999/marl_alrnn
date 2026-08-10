@@ -5,7 +5,10 @@ from __future__ import annotations
 import matplotlib.pyplot as plt
 import numpy as np
 
-from linear_region_functions import convert_to_bits
+try:
+    from .linear_region_functions import convert_to_bits
+except ImportError:
+    from linear_region_functions import convert_to_bits
 
 
 def latent_region_bits(generated_latent, P):

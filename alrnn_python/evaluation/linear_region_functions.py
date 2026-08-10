@@ -33,7 +33,7 @@ def total_flips_per_dim(bits):
     
 
 def minimal_regions(bit_flips, total_regions):
-    
+    # Find the indices of the smallest values in bit_flips
     indices=[]
     flips=np.copy(bit_flips)
     for i in range(total_regions):
@@ -43,9 +43,10 @@ def minimal_regions(bit_flips, total_regions):
 
     return indices
 
+
 def relative_frequencies(bits):
+    # Compute the relative frequencies of each bit being 1 across all time steps
     frequencies=np.mean(bits,axis=0)
-    
     return frequencies
 
 
@@ -80,6 +81,7 @@ def boundary_crossings_optimized(data):
     # Selecting the unique transitions
     crossings = data[change_indices]
     return crossings
+
 
 def connectome_with_self_connections(bits, mf_regions, N):
     # Map each unique region to an index

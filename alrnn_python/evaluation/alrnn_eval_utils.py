@@ -53,16 +53,39 @@ def load_dataset(data_dir):
     }
 
 
-def load_model(model_path, M, P, N, device="cpu"):
-    model = AL_RNN(M=M, P=P, N=N).to(device)
+def load_model(model_path, M=None, P=None, N=None, device="cpu"):
     checkpoint = torch.load(model_path, map_location=device)
-    state_dict = checkpoint.get("model_state_dict", checkpoint) if isinstance(checkpoint, dict) else checkpoint
+    is_checkpoint = isinstance(checkpoint, dict) and "model_state_dict" in checkpoint
+    state_dict = checkpoint["model_state_dict"] if is_checkpoint else checkpoint
+    train_config = checkpoint.get("train_config") if is_checkpoint else None
+
+    saved_dimensions = train_config or {}
+    supplied_dimensions = {"M": M, "P": P, "N": N}
+    resolved_dimensions = {}
+    for name, supplied_value in supplied_dimensions.items():
+        saved_value = saved_dimensions.get(name)
+        if supplied_value is not None and saved_value is not None and supplied_value != saved_value:
+            raise ValueError(
+                f"{name}={supplied_value} does not match the checkpoint train config "
+                f"({name}={saved_value})"
+            )
+        resolved_dimensions[name] = saved_value if saved_value is not None else supplied_value
+
+    missing = [name for name, value in resolved_dimensions.items() if value is None]
+    if missing:
+        raise ValueError(
+            f"Missing model dimensions {missing}. Pass them explicitly when loading a legacy "
+            "state_dict that has no saved train_config."
+        )
+
+    model = AL_RNN(**resolved_dimensions).to(device)
     model.load_state_dict(state_dict)
+    model.train_config = dict(train_config) if train_config is not None else None
     model.eval()
     return model
 
 
-def load_eval_context(data_dir, model_path, M, P, device="cpu"):
+def load_eval_context(data_dir, model_path, M=None, P=None, device="cpu"):
     data = load_dataset(data_dir)
     # Determine the dimensions
     N = data["test_norm"].shape[-1]
@@ -72,9 +95,10 @@ def load_eval_context(data_dir, model_path, M, P, device="cpu"):
         "data": data,
         "model": model,
         "model_path": Path(model_path),
-        "M": M,
-        "P": P,
-        "N": N,
+        "M": model.M,
+        "P": model.P,
+        "N": model.N,
+        "train_config": model.train_config,
         "device": device,
     }
 
